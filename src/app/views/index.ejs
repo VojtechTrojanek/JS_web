@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css" />
+    <title>Moje stránka</title>
+</head>
+<body>
+	<% let jmeno = 'Jakub Šenkýř'; %>
+	<h1>Moje stránka</h1>
+	<p>
+    Vítejte u mě! <i>(<%= jmeno %>)</i>
+	</p>
+	<p>
+	Dnes je <b><%= new Date(); %></b>
+	</p>
+	<%
+	let cas = new Date();
+	if(cas.getHours() == 14 && cas.getMinutes() >= 45) {
+	%>
+	<p>Do konce hodiny zbývá méně než <b>15 minut!</b><p>
+	<% } %>
+</body>
+</html>
