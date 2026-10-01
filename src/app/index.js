@@ -11,10 +11,8 @@ app.set('views', './app/views');
 // misto se statickymi soubory (HTML, CSS, obrazky, ...)
 app.use(express.static('./public'));
 
-// reakce na custom URL, ktere server obsluhuje
-app.get('/', (req, res) => {
-	res.render('index');
-});
+// zpracovani dynamickych URL provadi router
+app.use(require('./routes/defaultRouter'));
 
 // vystaveni aplikace pro pouziti v server.js
 module.exports = app;
