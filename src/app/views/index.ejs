@@ -3,24 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css" />
-    <title>Moje stránka</title>
+    <meta name="description" content="Pronajměte si vůz, který vás doveze dál. Vyberte si z nabídky Driveway a vyrazte na cestu.">
+    <link rel="stylesheet" href="/style.css">
+    <title>Driveway — půjčovna, která vás dostane dál</title>
 </head>
 <body>
-	<% let jmeno = 'Vojtěch Trojánek'; %>
-	<h1>Moje stránka</h1>
-	<p>
-    Vítejte u mě! <i>(<%= jmeno %>)</i>
-	</p>
-	<p>
-	Dnes je <b><%= new Date(); %></b>
-	</p>
-	<%
-	let cas = new Date();
-	if(cas.getHours() == 14 && cas.getMinutes() >= 45) {
-	%>
-	<p>Do konce hodiny zbývá méně než <b>15 minut!</b><p>
-	<% } %>
-	<a href="about">O aplikaci</a>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="Driveway — úvodní stránka">
+            <span class="brand-mark">D</span>
+            <span>driveway<span class="brand-period">.</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Hlavní navigace">
+            <a href="/about">O nás</a>
+        </nav>
+        <a class="header-link" href="#vozy">Vybrat vůz <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-shade"></div>
+            <div class="hero-content">
+                <p class="eyebrow"><span class="eyebrow-line"></span> Půjčovna aut bez starostí</p>
+                <h1>Kam dál?<br><span>Je to na vás.</span></h1>
+                <p class="hero-copy">Vůz pro každý plán. Připravený, když jste vy.</p>
+            </div>
+            <div class="hero-caption"><span>01 / 03</span><span>Nové cesty začínají tady</span></div>
+            <div class="hero-scroll">SJEĎTE DOLŮ <span aria-hidden="true">↓</span></div>
+        </section>
+
+        <section class="booking-panel" aria-label="Informace o pronájmu">
+            <div class="booking-intro">
+                <span class="booking-icon" aria-hidden="true">↗</span>
+                <div><strong>Váš další vůz</strong><span>Čeká jen na vás</span></div>
+            </div>
+            <div class="booking-detail"><span class="field-label">MÍSTO VYZVEDNUTÍ</span><strong>Praha, Česká republika</strong></div>
+            <div class="booking-detail"><span class="field-label">VYZVEDNUTÍ</span><strong>Kdykoliv se vám to hodí</strong></div>
+        </section>
+
+        <section class="fleet section-wrap" id="vozy">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> VYBERTE SI SVŮJ SMĚR</p>
+                    <h2>Vůz pro každý <span>plán.</span></h2>
+                </div>
+                <a class="text-link" href="#vozy">Prohlédnout celou nabídku <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="car-grid">
+                <article class="car-card">
+                    <div class="car-image">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1100&q=85" alt="Sportovní kupé připravené na cestu">
+                        <span class="car-category">01 — SPORT</span>
+                    </div>
+                    <div class="car-info">
+                        <div><p class="car-type">PRO VÍKENDY A ZÁŽITKY</p><h3>Chevrolet Camaro</h3></div>
+                        <div class="car-price"><strong>2 490 Kč</strong><span>/ den</span></div>
+                    </div>
+                    <div class="car-specs"><span>Automat</span><span>4 místa</span><span>Benzín</span></div>
+                </article>
+                <article class="car-card">
+                    <div class="car-image">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1100&q=85" alt="Elegantní prémiový sedan">
+                        <span class="car-category">02 — PREMIUM</span>
+                    </div>
+                    <div class="car-info">
+                        <div><p class="car-type">KOMFORT NA KAŽDÉ CESTĚ</p><h3>Mercedes-Benz C</h3></div>
+                        <div class="car-price"><strong>1 890 Kč</strong><span>/ den</span></div>
+                    </div>
+                    <div class="car-specs"><span>Automat</span><span>5 míst</span><span>Hybrid</span></div>
+                </article>
+                <article class="car-card">
+                    <div class="car-image">
+                        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1100&q=85" alt="Prostorné SUV na rodinný výlet">
+                        <span class="car-category">03 — SUV</span>
+                    </div>
+                    <div class="car-info">
+                        <div><p class="car-type">PRO VÝLETY BEZ LIMITŮ</p><h3>Range Rover Sport</h3></div>
+                        <div class="car-price"><strong>2 290 Kč</strong><span>/ den</span></div>
+                    </div>
+                    <div class="car-specs"><span>Automat</span><span>5 míst</span><span>Diesel</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="benefits" id="vyhody">
+            <div class="section-wrap benefits-inner">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-line"></span> JEDNODUŠE LEPŠÍ PRONÁJEM</p>
+                    <h2>Svoboda na cestě.<br><span>Klid v hlavě.</span></h2>
+                </div>
+                <div class="benefit-list">
+                    <article><span>01</span><div><h3>Žádná překvapení</h3><p>Jasné ceny a férové podmínky. Vždy víte, za co platíte.</p></div></article>
+                    <article><span>02</span><div><h3>Vůz připravený vyrazit</h3><p>Každé auto před předáním pečlivě kontrolujeme a čistíme.</p></div></article>
+                    <article><span>03</span><div><h3>Vaše cesta, vaše tempo</h3><p>Vyzvednutí i vrácení domluvíme tak, aby vám to vyhovovalo.</p></div></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand brand-footer" href="/"><span class="brand-mark">D</span><span>driveway<span class="brand-period">.</span></span></a>
+        <p>Dobré cesty začínají dobrým autem.</p>
+        <a href="/about">Více o Driveway <span aria-hidden="true">↗</span></a>
+        <span class="copyright">© 2026 DRIVEWAY RENTAL</span>
+    </footer>
 </body>
 </html>
