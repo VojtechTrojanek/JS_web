@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Informace o aplikaci Driveway, její nabídce vozů a přehledu cen pronájmu.">
+    <meta name="description" content="Informace o aplikaci <%= titulek %>, její nabídce vozů a přehledu cen pronájmu.">
     <link rel="stylesheet" href="/style.css">
-    <title>O aplikaci — Driveway</title>
+    <title>O aplikaci — <%= titulek %></title>
 </head>
 <body>
     <header class="site-header">
-        <a class="brand" href="/" aria-label="Driveway — úvodní stránka">
-            <span class="brand-mark">D</span>
-            <span>driveway<span class="brand-period">.</span></span>
+        <a class="brand" href="/" aria-label="<%= titulek %> — úvodní stránka">
+            <span class="brand-mark"><%= titulek.charAt(0).toUpperCase() %></span>
+            <span><%= titulek %><span class="brand-period">.</span></span>
         </a>
         <nav class="main-nav" aria-label="Hlavní navigace">
             <a href="/about" aria-current="page">O aplikaci</a>
@@ -29,17 +29,17 @@
         <section class="about-content">
             <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> JAK APLIKACE FUNGUJE</p>
             <h2>Vše o nabídce vozů na jednom místě.</h2>
-            <p>Tato aplikace představuje nabídku půjčovny aut Driveway. Na úvodní stránce najdete výběr vozů, jejich základní parametry a orientační cenu pronájmu za den.</p>
+            <p>Tato aplikace představuje nabídku půjčovny aut <%= titulek %>. Na úvodní stránce najdete výběr vozů, jejich základní parametry a orientační cenu pronájmu za den.</p>
             <p>Pomocí odkazu „Vybrat vůz“ se snadno přesunete k nabídce. Aplikace slouží k prohlížení informací a neprovádí online rezervace ani platby.</p>
             <a class="button button-dark" href="/#vozy">Zobrazit nabídku vozů <span aria-hidden="true">↗</span></a>
         </section>
     </main>
 
     <footer class="site-footer">
-        <a class="brand brand-footer" href="/"><span class="brand-mark">D</span><span>driveway<span class="brand-period">.</span></span></a>
+        <a class="brand brand-footer" href="/"><span class="brand-mark"><%= titulek.charAt(0).toUpperCase() %></span><span><%= titulek %><span class="brand-period">.</span></span></a>
         <p>Přehledná nabídka vozů k pronájmu.</p>
         <a href="/">Zpět na úvod <span aria-hidden="true">↗</span></a>
-        <span class="copyright">© 2026 DRIVEWAY RENTAL</span>
+        <span class="copyright">© 2026 <%= titulek.toUpperCase() %> RENTAL</span>
     </footer>
 </body>
 </html>

@@ -1,13 +1,14 @@
 // vytvoreni routeru (expressova miniaplikace)
 const router = require('express').Router();
+const titulek = 'Driveway';
 
 // reakce na custom URL, ktere server obsluhuje
 router.get(['/', '/index'], (req, res) => {
-	res.render('index');
+	res.render('index', { titulek });
 });
 
 router.get(['/', '/about'], (req, res) => {
-	res.render('about');
+	res.render('about', { titulek });
 });
 
 // odchyceni neznamych URL
