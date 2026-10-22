@@ -8,6 +8,8 @@ app.set('view engine', 'ejs');
 // nastaveni slozky se sablonami
 app.set('views', './app/views');
 
+app.use(express.urlencoded({ extended: false }));
+
 // misto se statickymi soubory (HTML, CSS, obrazky, ...)
 app.use(express.static('./public'));
 

@@ -374,6 +374,101 @@ p {
     margin-left: 10px;
 }
 
+.item-form {
+    display: grid;
+    grid-template-columns: minmax(180px, .8fr) 1.5fr auto;
+    align-items: end;
+    gap: 24px;
+    padding: 25px;
+    margin-bottom: 24px;
+    background: #fff;
+}
+
+.fleet .offers-button {
+    display: flex;
+    width: fit-content;
+    min-height: 54px;
+    padding: 0 26px;
+    margin: 16px auto 40px;
+    font-size: 13px;
+}
+
+.item-form-heading h3 {
+    margin: 0 0 7px;
+    font: 700 17px 'Manrope', sans-serif;
+}
+
+.item-form-heading .eyebrow {
+    margin-bottom: 10px;
+}
+
+.item-form-heading > p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.item-form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.item-form-fields label {
+    display: grid;
+    gap: 6px;
+    color: #5e655f;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.item-form-wide {
+    grid-column: 1 / -1;
+}
+
+.item-form-fields input,
+.item-form-fields textarea {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--ink);
+    background: #fff;
+    font: 400 12px 'DM Sans', sans-serif;
+}
+
+.item-form-fields textarea {
+    resize: vertical;
+}
+
+.item-form-fields input:focus,
+.item-form-fields textarea:focus {
+    outline: 2px solid #93ad37;
+    outline-offset: 1px;
+}
+
+.item-form .button {
+    min-height: 42px;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 4px;
+    font: 600 11px 'DM Sans', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.item-form .button span {
+    margin-left: 8px;
+}
+
+.form-error {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #a62929;
+    font-size: 12px;
+}
+
 .car-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -383,6 +478,8 @@ p {
 .car-card {
     min-width: 0;
     background: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .car-image {
@@ -453,13 +550,73 @@ p {
     font-size: 9px;
 }
 
-.car-specs {
-    display: flex;
-    gap: 16px;
-    padding: 12px 18px 17px;
-    border-top: 1px solid #ededeb;
+.car-description {
+    flex: 1;
+    padding: 0 18px 18px;
+    margin: 0;
     color: #68706b;
-    font-size: 9px;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.delete-item-form {
+    padding: 0 18px 17px;
+}
+
+.delete-item-button {
+    padding: 7px 10px;
+    border: 1px solid #dedfda;
+    border-radius: 4px;
+    color: #7a3434;
+    background: transparent;
+    font: 600 10px 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+
+.delete-item-button:hover {
+    border-color: #bd7777;
+    background: #fff8f8;
+}
+
+.empty-offers {
+    grid-column: 1 / -1;
+    padding: 30px;
+    margin: 0;
+    color: var(--muted);
+    background: white;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 1000px) {
+    .item-form {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .item-form .button {
+        grid-column: 2;
+        justify-self: start;
+    }
+}
+
+@media (max-width: 580px) {
+    .item-form {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .item-form .button {
+        grid-column: 1;
+    }
+
+    .item-form-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .item-form-wide {
+        grid-column: 1;
+    }
 }
 
 .benefits {

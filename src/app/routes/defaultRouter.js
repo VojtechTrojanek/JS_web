@@ -1,15 +1,23 @@
+const model = require('../models/itemsModel.js');
+
 // vytvoreni routeru (expressova miniaplikace)
 const router = require('express').Router();
 const titulek = 'Driveway';
 
 // reakce na custom URL, ktere server obsluhuje
 router.get(['/', '/index'], (req, res) => {
-	res.render('index', { titulek });
+	res.render('index', {
+		titulek,
+		items: model.getItems(),
+		showOffers: false
+	});
 });
 
-router.get(['/', '/about'], (req, res) => {
+router.get('/about', (req, res) => {
 	res.render('about', { titulek });
 });
+
+router.use('/items', require('./itemsRouter.js'));
 
 // odchyceni neznamych URL
 router.use((req, res) => {
