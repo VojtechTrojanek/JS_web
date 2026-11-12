@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Informace o aplikaci <%= titulek %>, její nabídce vozů a přehledu cen pronájmu.">
-    <link rel="stylesheet" href="/style.css">
-    <title>O aplikaci — <%= titulek %></title>
-</head>
+<%- include('partials/head', {
+    description: `Informace o aplikaci ${titulek}, její nabídce vozů a přehledu cen pronájmu.`,
+    pageTitle: `O aplikaci — ${titulek}`
+}) %>
 <body>
     <header class="site-header">
         <a class="brand" href="/" aria-label="<%= titulek %> — úvodní stránka">
@@ -35,11 +32,10 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <a class="brand brand-footer" href="/"><span class="brand-mark"><%= titulek.charAt(0).toUpperCase() %></span><span><%= titulek %><span class="brand-period">.</span></span></a>
-        <p>Přehledná nabídka vozů k pronájmu.</p>
-        <a href="/">Zpět na úvod <span aria-hidden="true">↗</span></a>
-        <span class="copyright">© 2026 <%= titulek.toUpperCase() %> RENTAL</span>
-    </footer>
+    <%- include('partials/footer', {
+        footerText: 'Přehledná nabídka vozů k pronájmu.',
+        footerLink: '/',
+        footerLinkText: 'Zpět na úvod'
+    }) %>
 </body>
 </html>
