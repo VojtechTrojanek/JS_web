@@ -18,6 +18,7 @@ router.get('/about', (req, res) => {
 });
 
 router.use('/items', require('./itemsRouter.js'));
+router.use('/users', require('./usersRouter.js'));
 
 // odchyceni neznamych URL
 router.use((req, res) => {

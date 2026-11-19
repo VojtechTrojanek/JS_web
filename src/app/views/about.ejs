@@ -12,6 +12,12 @@
         </a>
         <nav class="main-nav" aria-label="Hlavní navigace">
             <a href="/about" aria-current="page">O aplikaci</a>
+            <% if (currentUser) { %>
+                <a href="/users/profile">Můj profil</a>
+            <% } else { %>
+                <a href="/users/login">Přihlášení</a>
+                <a href="/users/register">Registrace</a>
+            <% } %>
         </nav>
         <a class="header-link" href="/#vozy">Vybrat vůz <span aria-hidden="true">↗</span></a>
     </header>

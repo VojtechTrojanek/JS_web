@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<%- include('partials/head', {
+    description: 'Přihlaste se ke svému účtu Driveway.',
+    pageTitle: `Přihlášení — ${titulek}`
+}) %>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="<%= titulek %> — úvodní stránka">
+            <span class="brand-mark"><%= titulek.charAt(0).toUpperCase() %></span>
+            <span><%= titulek %><span class="brand-period">.</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Hlavní navigace"><a href="/about">O aplikaci</a></nav>
+        <a class="header-link" href="/users/register">Registrace</a>
+    </header>
+    <main class="account-page">
+        <form class="account-card" action="/users/login" method="post">
+            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> VÁŠ ÚČET</p>
+            <h1>Přihlášení</h1>
+            <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+            <label>E-mail
+                <input name="email" type="email" autocomplete="email" required>
+            </label>
+            <label>Heslo
+                <input name="password" type="password" autocomplete="current-password" required>
+            </label>
+            <button class="button button-dark" type="submit">Přihlásit se <span aria-hidden="true">↗</span></button>
+            <p class="account-switch">Nemáte účet? <a href="/users/register">Zaregistrujte se</a></p>
+        </form>
+    </main>
+    <%- include('partials/footer', {
+        footerText: 'Dobré cesty začínají dobrým autem.',
+        footerLink: '/',
+        footerLinkText: 'Zpět na úvod'
+    }) %>
+</body>
+</html>

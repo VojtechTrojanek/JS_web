@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cs">
+<%- include('partials/head', {
+    description: 'Spravujte svůj účet Driveway.',
+    pageTitle: `Můj profil — ${titulek}`
+}) %>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="<%= titulek %> — úvodní stránka">
+            <span class="brand-mark"><%= titulek.charAt(0).toUpperCase() %></span>
+            <span><%= titulek %><span class="brand-period">.</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Hlavní navigace"><a href="/about">O aplikaci</a></nav>
+        <form action="/users/logout" method="post"><button class="header-link account-nav-button" type="submit">Odhlásit se</button></form>
+    </header>
+    <main class="account-page">
+        <section class="account-card profile-card">
+            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> VÁŠ ÚČET</p>
+            <h1>Můj profil</h1>
+            <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+            <dl class="profile-details">
+                <div><dt>Jméno</dt><dd><%= user.name %></dd></div>
+                <div><dt>E-mail</dt><dd><%= user.email %></dd></div>
+            </dl>
+            <form class="delete-profile-form" action="/users/delete" method="post" onsubmit="return confirm('Opravdu chcete trvale smazat svůj profil?');">
+                <label>Heslo pro potvrzení smazání
+                    <input name="password" type="password" autocomplete="current-password" required>
+                </label>
+                <button class="delete-profile-button" type="submit">Smazat profil</button>
+            </form>
+        </section>
+    </main>
+    <%- include('partials/footer', {
+        footerText: 'Dobré cesty začínají dobrým autem.',
+        footerLink: '/',
+        footerLinkText: 'Zpět na úvod'
+    }) %>
+</body>
+</html>

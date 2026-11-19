@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<%- include('partials/head', {
+    description: 'Vytvořte si účet v aplikaci Driveway.',
+    pageTitle: `Registrace — ${titulek}`
+}) %>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="<%= titulek %> — úvodní stránka">
+            <span class="brand-mark"><%= titulek.charAt(0).toUpperCase() %></span>
+            <span><%= titulek %><span class="brand-period">.</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Hlavní navigace"><a href="/about">O aplikaci</a></nav>
+        <a class="header-link" href="/users/login">Přihlásit se</a>
+    </header>
+    <main class="account-page">
+        <form class="account-card" action="/users/register" method="post">
+            <p class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> NOVÝ ÚČET</p>
+            <h1>Registrace</h1>
+            <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+            <label>Jméno
+                <input name="name" type="text" maxlength="80" autocomplete="name" required>
+            </label>
+            <label>E-mail
+                <input name="email" type="email" maxlength="254" autocomplete="email" required>
+            </label>
+            <label>Heslo (alespoň 8 znaků)
+                <input name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
+            </label>
+            <button class="button button-dark" type="submit">Vytvořit účet <span aria-hidden="true">↗</span></button>
+            <p class="account-switch">Už máte účet? <a href="/users/login">Přihlaste se</a></p>
+        </form>
+    </main>
+    <%- include('partials/footer', {
+        footerText: 'Dobré cesty začínají dobrým autem.',
+        footerLink: '/',
+        footerLinkText: 'Zpět na úvod'
+    }) %>
+</body>
+</html>
