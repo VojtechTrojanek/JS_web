@@ -1,0 +1,3 @@
+{
+  "ignore": ["app/data/*.json", "app/data/sessions/*.json"]
+}

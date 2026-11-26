@@ -1,5 +1,6 @@
 const jsondb = require('simple-json-db');
-const db = new jsondb('./app/data/users.json');
+const path = require('path');
+const db = new jsondb(path.join(__dirname, '..', 'data', 'users.json'));
 
 const getUsers = () => db.JSON();
 

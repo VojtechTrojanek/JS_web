@@ -1,8 +1,18 @@
 const bcrypt = require('bcrypt');
 const model = require('../models/usersModel.js');
+const itemsModel = require('../models/itemsModel.js');
 
 const titulek = 'Driveway';
 const passwordRounds = 12;
+
+const renderProfile = (res, user, error, status = 200) => {
+    res.status(status).render('profile', {
+        titulek,
+        user: { name: user.name, email: user.email },
+        rentedItems: itemsModel.getItems().filter((item) => String(item.rentedBy) === String(user.id)),
+        error
+    });
+};
 
 const renderForm = (res, view, error, status = 200) => {
     res.status(status).render(view, { titulek, error });
@@ -71,11 +81,22 @@ exports.showProfile = (req, res) => {
         req.session.userId = null;
         return res.redirect('/users/login');
     }
-    res.render('profile', {
-        titulek,
-        user: { name: user.name, email: user.email },
-        error: ''
-    });
+    renderProfile(res, user, '');
+};
+
+exports.returnItem = (req, res) => {
+    const user = model.getUserById(req.session.userId);
+    if (!user) return res.status(404).render('error');
+
+    const result = itemsModel.returnItem(req.params.id, user.id);
+    if (result === 'returned') return res.redirect('/users/profile');
+
+    renderProfile(
+        res,
+        user,
+        result === 'not-found' ? 'Tento vůz již není v nabídce.' : 'Tento vůz není pronajatý vaším účtem.',
+        result === 'not-found' ? 404 : 403
+    );
 };
 
 exports.logout = async (req, res) => {
@@ -90,13 +111,10 @@ exports.deleteProfile = async (req, res) => {
 
     const password = typeof req.body.password === 'string' ? req.body.password : '';
     if (!password || !await bcrypt.compare(password, user.passwordHash)) {
-        return res.status(401).render('profile', {
-            titulek,
-            user: { name: user.name, email: user.email },
-            error: 'Zadané heslo není správné. Profil nebyl smazán.'
-        });
+        return renderProfile(res, user, 'Zadané heslo není správné. Profil nebyl smazán.', 401);
     }
 
+    itemsModel.releaseRentalsByUserId(user.id);
     if (!model.deleteUser(user.id)) return res.status(404).render('error');
     await destroySession(req);
     res.clearCookie('connect.sid');

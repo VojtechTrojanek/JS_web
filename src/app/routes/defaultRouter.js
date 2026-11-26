@@ -9,7 +9,8 @@ router.get(['/', '/index'], (req, res) => {
 	res.render('index', {
 		titulek,
 		items: model.getItems(),
-		showOffers: false
+		showOffers: false,
+		rentalError: ''
 	});
 });
 

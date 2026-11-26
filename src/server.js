@@ -1,5 +1,6 @@
 // nacteni balicku dotenv (konfigurace aplikace souborem .env)
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 // vytvoreni jednoducheho HTTP serveru a predani rizeni aplikaci ve slozce app/
 require('http')

@@ -1,0 +1,4 @@
+.env
+app/data/session-secret
+app/data/sessions/
+node_modules/

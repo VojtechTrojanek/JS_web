@@ -5,5 +5,40 @@
         "price": 3490,
         "description": "Automat, Hybrid, 5 míst",
         "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1100&q=85"
+    },
+    {
+        "id": 2,
+        "name": "Škoda Octavia",
+        "price": 1890,
+        "description": "Automat, Benzín, 5 míst, prostorný zavazadlový prostor",
+        "image": "https://images.unsplash.com/photo-1727790621990-3a7a2623d564?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+    },
+    {
+        "id": 3,
+        "name": "BMW 3 Series",
+        "price": 2990,
+        "description": "Automat, Benzín, 5 míst, sportovní jízda",
+        "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1100&q=85"
+    },
+    {
+        "id": 4,
+        "name": "Porsche",
+        "price": 1590,
+        "description": "Manuál, Benzín, 5 míst, úsporný vůz do města",
+        "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1100&q=85"
+    },
+    {
+        "id": 5,
+        "name": "Audi A4",
+        "price": 2790,
+        "description": "Automat, Diesel, 5 míst, pohodlný interiér",
+        "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1100&q=85"
+    },
+    {
+        "id": 6,
+        "name": "Toyota Corolla",
+        "price": 1790,
+        "description": "Automat, Hybrid, 5 míst, nízká spotřeba",
+        "image": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1100&q=85"
     }
 ]

@@ -1,5 +1,6 @@
 const jsondb = require('simple-json-db');
-const db = new jsondb('./app/data/items.json');
+const path = require('path');
+const db = new jsondb(path.join(__dirname, '..', 'data', 'items.json'));
 
 exports.getItems = () => db.JSON();
 
@@ -29,4 +30,47 @@ exports.deleteItem = (id) => {
     }
 
     return false;
+};
+
+exports.rentItem = (id, userId) => {
+    const items = db.JSON();
+    const item = items.find((entry) => String(entry.id) === String(id));
+
+    if (!item) return 'not-found';
+    if (item.rentedBy) return 'unavailable';
+
+    item.rentedBy = userId;
+    db.JSON(items);
+    db.sync();
+    return 'rented';
+};
+
+exports.returnItem = (id, userId) => {
+    const items = db.JSON();
+    const item = items.find((entry) => String(entry.id) === String(id));
+
+    if (!item) return 'not-found';
+    if (String(item.rentedBy) !== String(userId)) return 'not-renter';
+
+    delete item.rentedBy;
+    db.JSON(items);
+    db.sync();
+    return 'returned';
+};
+
+exports.releaseRentalsByUserId = (userId) => {
+    const items = db.JSON();
+    let updated = false;
+
+    for (const item of items) {
+        if (String(item.rentedBy) === String(userId)) {
+            delete item.rentedBy;
+            updated = true;
+        }
+    }
+
+    if (updated) {
+        db.JSON(items);
+        db.sync();
+    }
 };

@@ -22,6 +22,23 @@
                 <div><dt>Jméno</dt><dd><%= user.name %></dd></div>
                 <div><dt>E-mail</dt><dd><%= user.email %></dd></div>
             </dl>
+            <section class="profile-rentals" aria-labelledby="profile-rentals-heading">
+                <h2 id="profile-rentals-heading">Pronajaté vozy</h2>
+                <% if (rentedItems.length) { %>
+                    <ul>
+                        <% rentedItems.forEach((item) => { %>
+                            <li class="profile-rental-item">
+                                <span><strong><%= item.name %></strong> — <%= Number(item.price).toLocaleString('cs-CZ') %> Kč / den</span>
+                                <form action="/users/return/<%= item.id %>" method="post">
+                                    <button class="return-item-button" type="submit">Vrátit vůz</button>
+                                </form>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>Zatím nemáte pronajatý žádný vůz.</p>
+                <% } %>
+            </section>
             <form class="delete-profile-form" action="/users/delete" method="post" onsubmit="return confirm('Opravdu chcete trvale smazat svůj profil?');">
                 <label>Heslo pro potvrzení smazání
                     <input name="password" type="password" autocomplete="current-password" required>

@@ -77,6 +77,7 @@
                 <a class="header-link offers-button" href="/items#vozy">Zobrazit nabídky <span aria-hidden="true">↗</span></a>
             <% } %>
             <% if (showOffers) { %>
+                <% if (rentalError) { %><p class="form-error rental-error" role="alert"><%= rentalError %></p><% } %>
                 <div class="car-grid">
                     <% if (items.length === 0) { %>
                         <p class="empty-offers">Nabídka je zatím prázdná. Přidejte první vůz pomocí formuláře výše.</p>
@@ -86,12 +87,24 @@
                             <div class="car-image">
                                 <img src="<%= item.image %>" alt="<%= item.name %>" loading="lazy">
                                 <span class="car-category"><%= String(index + 1).padStart(2, '0') %> — NABÍDKA</span>
+                                <% if (item.imageCredit) { %>
+                                    <a class="car-image-credit" href="<%= item.imageCredit.url %>" target="_blank" rel="noopener noreferrer"><%= item.imageCredit.text %></a>
+                                <% } %>
                             </div>
                             <div class="car-info">
                                 <div><p class="car-type">VŮZ K PRONÁJMU</p><h3><%= item.name %></h3></div>
                                 <div class="car-price"><strong><%= Number(item.price).toLocaleString('cs-CZ') %> Kč</strong><span>/ den</span></div>
                             </div>
                             <p class="car-description"><%= item.description %></p>
+                            <% if (item.rentedBy) { %>
+                                <p class="rental-status"><%= currentUser && String(currentUser.id) === String(item.rentedBy) ? 'Pronajato vámi' : 'Již pronajato' %></p>
+                            <% } else if (currentUser) { %>
+                                <form class="rent-item-form" action="/items/rent/<%= item.id %>" method="post">
+                                    <button class="button button-dark rent-item-button" type="submit">Pronajmout vůz <span aria-hidden="true">↗</span></button>
+                                </form>
+                            <% } else { %>
+                                <a class="button button-dark rent-item-button rent-login-link" href="/users/login">Přihlaste se k pronájmu <span aria-hidden="true">↗</span></a>
+                            <% } %>
                             <form class="delete-item-form" action="/items/delete/<%= item.id %>" method="post">
                                 <input type="hidden" name="showOffers" value="true">
                                 <button class="delete-item-button" type="submit">Odebrat vůz</button>

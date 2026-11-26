@@ -7,6 +7,7 @@ router.get('/login', controller.showLogin);
 router.post('/login', controller.login);
 router.post('/logout', controller.requireAuth, controller.logout);
 router.get('/profile', controller.requireAuth, controller.showProfile);
+router.post('/return/:id', controller.requireAuth, controller.returnItem);
 router.post('/delete', controller.requireAuth, controller.deleteProfile);
 
 module.exports = router;
